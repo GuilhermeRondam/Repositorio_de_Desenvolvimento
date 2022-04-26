@@ -1,0 +1,105 @@
+Ferramentas importantes:
+
+- cd: navegar entre as pastas
+- dir: listar, se situar em qual local está
+- mkdir: criar um diretório/pasta
+- del: deleta os arquivos dentro da pasta
+- rmdir: deleta a pasta com todos os arquivos dentro
+- cls: limpar a tela (ou ctrl+L)
+- cd ..: retroceder entre as pastas
+- > : redirecionador de fluxo, irá pegar o output digitado e jogar em um arquivo
+
+Sha1: 
+A sigla "SHA" significa 'Secure Hash Algorithm'(Algoritmo de Hash Seguro)
+é um conjunto de funções hash criptografadas projetadas pela NSA (Agência
+de Segurança Nacional dos EUA).
+- A encriptação gera conjunto de characteres identificador de 40 digitos
+(Ele é unico)
+
+Objetos internos:
+
+Blobls: Contém metadados do Git que são do tipo do objeto, tamanho do arquivo
+
+Tree: Armazenam os blobls
+- contém metadados
+- tem seu SHA1
+- Guarda o nome desse arquivo
+- Responsável por toda a estrutura de onde está os arquivos
+- Podem apontar para blobls ou para outras arvores
+- Tem um SHA1 encriptados os metadados das arvores
+
+Commit: irá juntar tudo, dará sentido a alteração que esta fazendo
+- aponta para um arvore
+- aponta para uma mensagem também
+- também possuem SHA1 (significa que se você altera algo na blob, ele irá
+alterar o SHA1 da arvore que está ligada nas blobs, consequentemente alte-
+rá os commits ligados e outras arvores)
+
+Criar um arquivo:
+- Entrar na pasta "mkdir ' nome da pasta' "
+- Criar outra pasta " mkdir 'nome da pasta' "
+- Inicializar e possibilitar que o Git comece a gerenciar o codigo "git init"
+
+Configuração inicial (dar nome e email para o repositório):
+- git config --global user.email "..."
+- git config --global user.name "..."
+
+"Commitar"
+Seguir os seguintes comandos:
+- git add *: o arquivo moverá de untracked para staged
+- git commit -m "nome de identificação": irá salvar todas as alterações feitas
+pelo dono do repositorio, e enviará para untracked novamente, para "esperar"
+alguma nova alteração.
+
+"Usar o git init, de fato estamos criando um repositório dentro daquela pasta"
+
+Unmodified: Arquivo que não foi modificado
+Modified: Arquivo que foi modificado
+Staged: é onde ficam os arquivos que estão se praparando para fazer parte
+de outro tipo de agrupamento
+
+"Arquivo modified usando git add, vai direto para o Staged também"
+
+- git status: dizer justamente o status do arquivo (untracked, unmodified e etc...)
+- mv: mover o arquivo para dentro da pasta (mv arquivo./pasta)
+
+Git Hub:
+
+- git config --list: trará todas as configurações que estão no seu git
+
+retirar email e nome anterior:
+- git config --global --unset user.email
+- git config --global --unset user.name
+
+Criar um repositório:
+
+Perfil --> Your repository --> New
+ . Dar um nome ao repositório
+ . Dar uma descrição
+ . Escolher se será um artigo público ou privado
+ . Adicionar ou não um README.md
+ . Criar o repositório
+
+Colocar o projeto no repositório: 
+ . Copiar o link dado pelo GitHub
+ . git remote add origin link
+ . git remote -v: irá listar, as listas de repositorios remotos cadastrados
+ . origin: é um apelido, para que não seja necessario digitar o endereço
+HTTPS, link.
+ . git push origin "branch"
+
+Resolvendo conflitos:
+Quando alguma pessoa pega e copia algo do repositório, cria códigos, acrescenta
+algo. Esse mesmo arquivo passa a ser diferente do que está no GitHub, do que está
+na sua maquina e o que está na maquina da pessoa.
+Se a pessoa enviar para o GitHub com as alterações, o site vai entender que 
+a sua versão é antiga e menos atualizada, e ele irá te devolver isso.
+
+Conflito de merge:
+Quando o GitHub tenta juntar o codigo e existe duas alterações na mesma linha,
+ele exigirá que você manualmente resolva aquilo e mande para o GitHub.
+
+- Depois de qualquer alteração, o arquivo ficará modificado
+
+- Para juntar o arquivo modificado, puxar o que está no repositório para a
+maquina local e usar o comando: git push origin e a branch
